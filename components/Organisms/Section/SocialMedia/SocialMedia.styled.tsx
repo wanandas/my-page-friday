@@ -6,7 +6,7 @@ export const NameText = styled("h1")`
 `;
 
 export const SocialMediaWrapper = styled("footer")`
-  border-top: 4px solid salmon;
+  border-top: 4px solid ${({ theme }) => theme.palette.primary.main};
   margin-top: 8rem;
 
   @media screen and (min-width: 768px) {
