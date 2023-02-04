@@ -15,6 +15,7 @@ export const BusyOnFriday = styled("h2")`
 
 export const NavWrapper = styled(animated.div)`
   display: flex;
+  z-index: 999;
   align-items: center;
   max-width: 1440px;
   position: sticky;
@@ -36,25 +37,20 @@ export const NavWrapper = styled(animated.div)`
 
 export const NavItem = styled(Link)`
   text-shadow: 1px 1px 1px ${({ theme }) => theme.palette.primary.main};
-  font-size: 14px;
   display: none;
   width: 1ch;
   overflow: hidden;
 
-  &:hover {
-    text-shadow: 1px 1px 1px salmon;
-  }
-
   @media screen and (min-width: 375px) {
     display: flex;
   }
-
-  &:hover {
-    color: salmon;
-    text-shadow: 1px 1px 1px black;
-    /* transform: scale(1.1); */
-    transition: all 0.1s linear;
-    padding-bottom: 12px;
+  @media (hover: hover) {
+    &:hover {
+      color: salmon;
+      text-shadow: 1px 1px 1px black;
+      transition: all 0.1s linear;
+      padding-bottom: 12px;
+    }
   }
 
   @media screen and (min-width: 600px) {

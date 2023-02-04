@@ -8,7 +8,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useMemo } from "react";
 import { styled } from "@mui/system";
 import { getDesignTokens } from "helpers/getDesignToken";
-
+import { SocialMedia } from "@/components/Organisms";
+import {
+  FacebookIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+} from "@/components/Atoms/Icons";
 export default function App({ Component, pageProps }: AppProps) {
   const { darkMode, handleDarkMode } = useDarkMode();
 
@@ -16,7 +22,32 @@ export default function App({ Component, pageProps }: AppProps) {
     () => createTheme(getDesignTokens(darkMode ? "dark" : "light")),
     [darkMode]
   );
-
+  const social = [
+    {
+      key: "sc1",
+      Component: FacebookIcon,
+      link: "https://www.facebook.com/WanFutrue",
+      title: "Wantanawat Jitprakop",
+    },
+    {
+      key: "sc2",
+      Component: InstagramIcon,
+      link: "https://www.instagram.com/busyonfriday/",
+      title: "BusyOnFriday",
+    },
+    {
+      key: "sc3",
+      Component: LinkedinIcon,
+      link: "https://www.linkedin.com/in/wantanawat-jitprakop-0750a5188/",
+      title: "Wantanawat Jitprakop",
+    },
+    {
+      key: "sc4",
+      Component: GithubIcon,
+      link: "https://github.com/wanandas",
+      title: "BusyOnFriday",
+    },
+  ];
   return (
     <div>
       <Head>
@@ -29,17 +60,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
         <MainWrapper>
           <CssBaseline />
-          <Component {...pageProps} />{" "}
+          <Component {...pageProps} />
+          <SocialMedia social={social} />
         </MainWrapper>
       </ThemeProvider>
-      <footer className={``}></footer>
     </div>
   );
 }
 
 const MainWrapper = styled("div")`
   padding: 0 16px;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
 
   @media screen and (min-width: 425px) {
     padding: 0 32px;

@@ -10,7 +10,11 @@ export const BusyText = styled("span")`
 
 export const HomePageWrapper = styled("div")`
   display: flex;
+  margin: 4rem 0;
   flex-direction: column;
+  @media screen and (min-width: 1024px) {
+    margin-top: 8rem;
+  }
 `;
 
 export const HomeWrapper = styled("div")`
@@ -18,22 +22,17 @@ export const HomeWrapper = styled("div")`
     width: 90%;
     align-self: center;
   }
+
   @media screen and (min-width: 1440px) {
-    align-self: unset;
-    width: 60%;
+    width: 80%;
   }
 `;
 
 export const HomeTitle = styled("div")`
-  border: 5px solid ${({ theme }) => theme.palette.primary.main};
   padding: 16px;
-  border-radius: 40px;
+  border-radius: 25px;
+  border: 5px solid ${({ theme }) => theme.palette.primary.main};
   box-shadow: 2px 3px 4px ${({ theme }) => theme.palette.secondary.main};
-  background: linear-gradient(
-    0deg,
-    ${({ theme }) => (theme.palette.mode === "dark" ? "#222" : "#dfdfdf")} 0%,
-    ${({ theme }) => theme.palette.primary.main} 100%
-  );
 
   @media screen and (min-width: 600px) {
     padding: 32px 48px;
@@ -43,26 +42,24 @@ export const HomeTitle = styled("div")`
 export const FridayText = styled("h1")`
   position: relative;
   font-size: 48px;
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
   display: block;
   margin: 0;
-  @media screen and (min-width: 600px) {
-    font-size: 64px;
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
+  @media screen and (min-width: 425px) {
+    font-size: 60px;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 88px;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 128px;
     padding-left: 32px;
   }
 `;
 
 export const RoleText = styled("p")`
+  margin: 0;
+  text-align: end;
   font-size: 14px;
   text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
-`;
-
-export const MobileLowerBox = styled("div")`
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 14px;
-  @media screen and (min-width: 375px) {
-    display: none;
-  }
 `;

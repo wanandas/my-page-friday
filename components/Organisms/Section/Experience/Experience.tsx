@@ -5,6 +5,10 @@ import {
   TitleWrapper,
   SubTitle,
   Description,
+  PositionWrapper,
+  DescriptionWrapper,
+  DescriptionItem,
+  TechnologiesWrapper,
 } from "./Experience.styled";
 
 export interface IExperience {
@@ -26,28 +30,28 @@ const Experience = ({ data }: { data: IExperience[] }) => {
       </TitleWrapper>
       {data.map((value, i) => {
         return (
-          <div key={i}>
+          <PositionWrapper key={i}>
             <SubTitle>{value.position}</SubTitle>
             <Description>
               {value.companyName} :{" "}
               {dayjs(value.joinDate).format("MMMM D, YYYY")} -{" "}
-              {dayjs(value.leaveDate).format("MMMM D, YYYY")}
+              {value.leaveDate
+                ? dayjs(value.leaveDate).format("MMMM D, YYYY")
+                : "Present"}
             </Description>
             <SubTitle>Description</SubTitle>
-            <ul style={{ paddingLeft: "16px" }}>
+            <DescriptionWrapper>
               {value.description.map((v, i) => (
-                <li key={v} style={{ wordSpacing: "2.4px", fontWeight: 500 }}>
-                  {v}
-                </li>
+                <DescriptionItem key={v}>{v}</DescriptionItem>
               ))}
-            </ul>
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            </DescriptionWrapper>
+            <TechnologiesWrapper>
               <strong>Technologies</strong> :{" "}
               {value.technologies.map((v) => (
                 <Badge key={v} value={v} />
               ))}
-            </div>
-          </div>
+            </TechnologiesWrapper>
+          </PositionWrapper>
         );
       })}
     </BlockAbout>
