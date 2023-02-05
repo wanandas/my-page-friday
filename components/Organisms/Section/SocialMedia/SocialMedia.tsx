@@ -19,12 +19,12 @@ const SocialMedia = ({ social }: { social: ISocial[] }) => {
       <NameText>Social Media</NameText>
       <MediaWrapper>
         {social.map(({ Component, title, link, key }) => (
-          <MediaItem key={key}>
-            <Component />
-            <Link target="_blank" href={link}>
+          <Link key={key} target="_blank" href={link}>
+            <MediaItem>
+              <Component />
               {title}
-            </Link>
-          </MediaItem>
+            </MediaItem>
+          </Link>
         ))}
       </MediaWrapper>
     </SocialMediaWrapper>

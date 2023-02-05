@@ -6,5 +6,3 @@ export const isDarkMode =
   (localStorage.isDark === "true" ||
     (!("isDark" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: dark)").matches));
-
-console.log(isDarkMode);

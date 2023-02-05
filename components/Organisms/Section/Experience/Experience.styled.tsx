@@ -9,7 +9,7 @@ export const BlockAbout = styled("section")`
 export const TitleWrapper = styled("div")`
   & > h1 {
     padding-bottom: 12px;
-    border-bottom: 2px solid salmon;
+    border-bottom: 2px solid ${({ theme }) => theme.palette.primary.main};
   }
 `;
 

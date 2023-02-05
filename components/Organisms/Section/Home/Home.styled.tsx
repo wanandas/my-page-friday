@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 
 export const BusyText = styled("span")`
   font-size: 24px !important;
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
   @media screen and (min-width: 600px) {
     font-size: 48px;
   }
@@ -44,7 +44,7 @@ export const FridayText = styled("h1")`
   font-size: 48px;
   display: block;
   margin: 0;
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
   @media screen and (min-width: 425px) {
     font-size: 60px;
   }
@@ -61,5 +61,5 @@ export const RoleText = styled("p")`
   margin: 0;
   text-align: end;
   font-size: 14px;
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
 `;

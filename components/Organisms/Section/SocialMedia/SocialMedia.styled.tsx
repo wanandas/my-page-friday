@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 export const NameText = styled("h1")`
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.secondary.main};
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
   text-align: center;
 `;
 
