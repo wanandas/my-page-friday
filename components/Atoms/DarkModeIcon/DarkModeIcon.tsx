@@ -118,12 +118,12 @@ const DarkModeIcon: FunctionComponent<Props> = ({
       width={size}
       height={size}
       onMouseEnter={() => {
-        set({
+        set.start({
           color: "rgb(250, 72, 72)",
         });
       }}
       onMouseLeave={() => {
-        set({ color: checked ? moonColor : sunColor });
+        set.start({ color: checked ? moonColor : sunColor });
       }}
       viewBox="0 0 24 24"
       color={color}
