@@ -8,11 +8,7 @@ interface INavbar {
 }
 
 const Navbar = ({ handleDarkMode, darkMode }: INavbar) => {
-  const menus = [
-    { title: "Experience" },
-    { title: "Project" },
-    { title: "Contact" },
-  ];
+  const menus = [{ title: "Experience" }, { title: "Project" }];
 
   return (
     <NavWrapper>

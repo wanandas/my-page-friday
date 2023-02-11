@@ -1,10 +1,8 @@
-import { styled } from "@mui/material";
-import dayjs from "dayjs";
-import { GetStaticProps } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import { ProjectGitBox } from "@/components/Organisms";
+import { GetStaticProps } from "next";
 
-type IData = {
+export type IData = {
   id: string;
   created_at: string;
   description: string;
@@ -23,59 +21,31 @@ const Project = ({ data }: { data: IData[] }) => {
       <h1 style={{ textAlign: "center", paddingBottom: "16px" }}>
         My Project Repo in GITHUB
       </h1>
-      <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}
-      >
-        {data.map((v) => {
-          return (
-            <BoxText key={v.id}>
-              <div>
-                <span style={{ fontWeight: "600", marginRight: "8px" }}>
-                  Name :{" "}
-                </span>
-                <Link target="_blank" href={v.html_url}>
-                  {v.full_name}
-                </Link>
-              </div>
-              <div>
-                <span style={{ fontWeight: "600", marginRight: "8px" }}>
-                  Language:
-                </span>{" "}
-                {v.language}
-              </div>
-              <div>
-                <span style={{ fontWeight: "600", marginRight: "8px" }}>
-                  Description:
-                </span>{" "}
-                {v.description || "-"}
-              </div>
-              <div>
-                <span style={{ fontWeight: "600", marginRight: "8px" }}>
-                  Created at:
-                </span>{" "}
-                {dayjs(v.created_at).format("MMMM D, YYYY")}
-              </div>
-            </BoxText>
-          );
-        })}
-      </div>
+      <ProjectGitBox data={data} />
     </div>
   );
 };
 export const getStaticProps = async (ctx: GetStaticProps) => {
-  const url = process.env.NEXT_GITHUB_REPOS_URL as string;
   // get All my repo
-  const repos = await fetch(`${url}?per_page=100`);
+  const url = process.env.NEXT_GITHUB_REPOS_URL as string;
+  const repos = await fetch(`${url}?per_page=100&sort=created`);
 
   const data = await repos.json();
 
-  return { props: { data: data } };
+  const result = data.map((v: IData) => {
+    // return only id, created_at, description, full_name, html_url, language, languages_url
+    return {
+      id: v.id,
+      created_at: v.created_at,
+      description: v.description,
+      full_name: v.full_name,
+      html_url: v.html_url,
+      language: v.language,
+      languages_url: v.languages_url,
+    };
+  });
+
+  return { props: { data: result } };
 };
 
 export default Project;
-
-const BoxText = styled("div")`
-  border: 3px solid ${({ theme }) => theme.palette.primary.main};
-  border-radius: 12px;
-  padding: 12px;
-`;
