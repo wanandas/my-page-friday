@@ -12,8 +12,3 @@ export default function HomePage() {
     </HomePageWrapper>
   );
 }
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  };
-};
