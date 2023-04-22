@@ -14,7 +14,7 @@ export default function ExperiencePage({ data }: { data: IExperience[] }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const supaKey = process.env.NEXT_SUPABASE_KEY as string;
   const supaUrl = process.env.NEXT_SUPABASE_URL as string;
   const supabase = createClient(supaUrl, supaKey);

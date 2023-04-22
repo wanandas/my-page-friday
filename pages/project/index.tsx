@@ -28,7 +28,7 @@ const Project = ({ data }: { data: IData[] }) => {
   );
 };
 
-export const getStaticProps = async (ctx: GetStaticProps) => {
+export const getServerSideProps = async (ctx: GetStaticProps) => {
   // get All my repo
   const url = process.env.NEXT_GITHUB_REPOS_URL as string;
   const repos = await fetch(`${url}?per_page=100&sort=created`);
