@@ -1,14 +1,13 @@
-import { PaletteMode } from "@mui/material";
+import { createTheme, PaletteMode } from "@mui/material";
 import { amber, deepOrange, grey } from "@mui/material/colors";
-
-export const getDesignTokens = (mode: PaletteMode) => ({
+const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
     ...(mode === "light"
       ? {
           // NOTE palette values for light mode
-          primary: { main: "#FA8072" },
-          secondary: { main: "#8FC9A3" },
+          primary: { main: "#281B24" },
+          secondary: { main: "#F7C289" },
           divider: amber[200],
           text: {
             primary: grey[900],
@@ -17,7 +16,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         }
       : {
           // NOTE palette values for dark mode
-          primary: { main: "#8FC9A3" },
+          primary: { main: "#FA8072" },
           secondary: { main: "#FA8072" },
           divider: deepOrange[700],
           text: {
@@ -27,3 +26,6 @@ export const getDesignTokens = (mode: PaletteMode) => ({
         }),
   },
 });
+
+export const LightTheme = createTheme(getDesignTokens("light"));
+export const DarkTheme = createTheme(getDesignTokens("dark"));

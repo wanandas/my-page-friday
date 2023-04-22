@@ -1,20 +1,34 @@
 import { styled } from "@mui/material";
+import { animated } from "react-spring";
 
 export const ImageBox = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 3rem 0;
+`;
+
+export const ImageWrapper = styled(animated.div)`
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  box-sizing: border-box;
+  border: 4px solid;
+
   @media screen and (min-width: 768px) {
-    margin: 9rem 0;
+    width: 400px;
+    height: 400px;
+    img {
+      width: 396px;
+      height: 396px;
+    }
   }
 `;
 
-export const ImageWrapper = styled("div")`
-  img {
-    border-radius: 25px;
-    border: 5px solid ${({ theme }) => theme.palette.primary.main};
-    box-shadow: 2px 3px 4px ${({ theme }) => theme.palette.secondary.main};
-  }
+export const AboutMeText = styled("h3")`
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 40rem;
 `;

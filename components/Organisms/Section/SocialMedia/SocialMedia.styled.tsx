@@ -1,16 +1,14 @@
 import { styled } from "@mui/material";
 
 export const NameText = styled("h1")`
-  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
   text-align: center;
+  text-shadow: 1px 4px 4px ${({ theme }) => theme.palette.primary.main};
 `;
 
 export const SocialMediaWrapper = styled("footer")`
-  border-top: 4px solid ${({ theme }) => theme.palette.primary.main};
-  margin-top: 8rem;
-
+  padding: 0 3rem 2rem;
   @media screen and (min-width: 768px) {
-    margin: 4rem;
+    padding: 4rem;
   }
 `;
 
@@ -19,7 +17,17 @@ export const MediaWrapper = styled("div")`
   flex-direction: row;
   gap: 24px;
   flex-wrap: wrap;
-  @media screen and (min-width: 1440px) {
+  justify-content: start;
+
+  svg {
+    filter: grayscale(1);
+    transition: filter 0.3s ease-in-out;
+    &:hover {
+      filter: grayscale(0);
+    }
+  }
+
+  @media screen and (min-width: 650px) {
     justify-content: space-around;
   }
 `;

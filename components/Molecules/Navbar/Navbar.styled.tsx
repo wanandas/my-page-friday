@@ -6,6 +6,7 @@ export const NavList = styled(animated.nav)`
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-right: 8px;
 `;
 
 export const BusyOnFriday = styled("h2")`
@@ -17,29 +18,28 @@ export const NavWrapper = styled(animated.div)`
   display: flex;
   z-index: 999;
   align-items: center;
-  max-width: 1440px;
   position: sticky;
   width: 100%;
   height: 111.2px;
   top: 0;
   backdrop-filter: blur(2px);
-  justify-content: space-between;
+  justify-content: end;
   padding: 0 16px;
-  margin: 0 auto;
 
   @media screen and (min-width: 425px) {
     padding: 0 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
   }
 `;
 
 export const NavItem = styled(Link)`
   text-shadow: 1px 1px 1px ${({ theme }) => theme.palette.primary.main};
   display: none;
+  text-decoration: none;
   width: 1ch;
   overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+  transition: 0.3s ease-in-out;
 
   @media screen and (min-width: 375px) {
     display: flex;
@@ -49,7 +49,6 @@ export const NavItem = styled(Link)`
       color: salmon;
       text-shadow: 1px 1px 1px black;
       transition: all 0.1s linear;
-      padding-bottom: 12px;
     }
   }
 

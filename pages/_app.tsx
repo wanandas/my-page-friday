@@ -5,9 +5,8 @@ import { Navbar } from "@/components/Molecules";
 import { useDarkMode } from "helpers/Hooks/useDarkmode";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useMemo } from "react";
-import { styled } from "@mui/system";
-import { getDesignTokens } from "helpers/getDesignToken";
+import { Suspense, useMemo } from "react";
+import { LightTheme, DarkTheme } from "helpers/getDesignToken";
 import { SocialMedia } from "@/components/Organisms";
 import {
   FacebookIcon,
@@ -15,13 +14,10 @@ import {
   InstagramIcon,
   LinkedinIcon,
 } from "@/components/Atoms/Icons";
+import styled from "@emotion/styled";
+
 export default function App({ Component, pageProps }: AppProps) {
   const { darkMode, handleDarkMode } = useDarkMode();
-
-  const theme = useMemo(
-    () => createTheme(getDesignTokens(darkMode ? "dark" : "light")),
-    [darkMode]
-  );
 
   const social = useMemo(
     () => [
@@ -53,34 +49,51 @@ export default function App({ Component, pageProps }: AppProps) {
     []
   );
 
+  const theme = useMemo(() => {
+    return createTheme(darkMode ? DarkTheme : LightTheme);
+  }, [darkMode]);
+
   return (
-    <div>
+    <AppWrapper>
       <Head>
         <title>Busy On Friday</title>
         <meta name="description" content="Friday Web Page" />
         <meta name="color-scheme" content="light dark" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={theme}>
-        <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
-        <MainWrapper>
-          <CssBaseline />
-          <Component {...pageProps} />
-          <SocialMedia social={social} />
-        </MainWrapper>
-      </ThemeProvider>
-    </div>
+      <Suspense fallback={<> </>}>
+        <ThemeProvider theme={theme}>
+          <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
+          <div>
+            <CssBaseline />
+            <Component {...pageProps} />
+            <SocialMedia social={social} />
+          </div>
+        </ThemeProvider>
+      </Suspense>
+    </AppWrapper>
   );
 }
 
-const MainWrapper = styled("div")`
-  padding: 0 16px;
-  margin: 0 auto 4rem;
+const AppWrapper = styled("div")`
+  line-height: 1.8;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Michroma", sans-serif;
+  transition: background 0.7s ease-in-out;
+  max-width: 1440px;
+  margin: 0 auto;
 
-  @media screen and (min-width: 425px) {
-    padding: 0 32px;
+  *::selection {
+    background: salmon;
+    color: white;
   }
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.5s ease-in-out;
   }
 `;

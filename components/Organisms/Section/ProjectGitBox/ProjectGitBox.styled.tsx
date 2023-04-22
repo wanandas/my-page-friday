@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 
 export const BoxText = styled("div")`
   border: 3px solid ${({ theme }) => theme.palette.primary.main};
-  box-shadow: 2px 3px 4px ${({ theme }) => theme.palette.secondary.main};
+  box-shadow: 2px 3px 4px ${({ theme }) => theme.palette.primary.main};
   border-radius: 12px;
   padding: 16px;
 `;

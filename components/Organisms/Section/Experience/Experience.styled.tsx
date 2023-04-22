@@ -1,5 +1,9 @@
 import { styled } from "@mui/material";
 
+type subProps = {
+  type: "position" | "description";
+};
+
 export const BlockAbout = styled("section")`
   width: 100%;
   display: flex;
@@ -8,13 +12,18 @@ export const BlockAbout = styled("section")`
 
 export const TitleWrapper = styled("div")`
   & > h1 {
-    padding-bottom: 12px;
-    border-bottom: 2px solid ${({ theme }) => theme.palette.primary.main};
+    padding: 0 2rem 12px;
+    border-bottom: 4px solid ${({ theme }) => theme.palette.primary.main};
   }
 `;
 
-export const SubTitle = styled("h3")`
+export const SubTitle = styled("h3")<subProps>`
   margin-bottom: 0;
+  text-shadow: ${(props) =>
+    props.type === "position"
+      ? `1px 4px 4px ${props.theme.palette.primary.main}`
+      : "none"};
+  font-weight: ${(props) => (props.type === "position" ? "bold" : "normal")};
 `;
 
 export const Description = styled("h4")`
@@ -24,6 +33,8 @@ export const Description = styled("h4")`
 
 export const PositionWrapper = styled("div")`
   margin-bottom: 2rem;
+
+  padding: 0 1rem;
 `;
 
 export const DescriptionWrapper = styled("ul")``;

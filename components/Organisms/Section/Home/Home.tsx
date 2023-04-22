@@ -1,21 +1,9 @@
-import MobileLowerBox from "@/components/Molecules/MobileLowerBox/MobileLowerBox";
-import {
-  BusyText,
-  HomeTitle,
-  RoleText,
-  FridayText,
-  HomeWrapper,
-} from "./Home.styled";
+import { FridayText, HomeWrapper } from "./Home.styled";
 
-const Home = ({ menus }: { menus: any[] }) => {
+const Home = () => {
   return (
     <HomeWrapper>
-      <HomeTitle>
-        <BusyText>BUSY ON</BusyText>
-        <FridayText>FRIDAY</FridayText>
-        <RoleText>Front-end Developer</RoleText>
-      </HomeTitle>
-      <MobileLowerBox menus={menus} />
+      <FridayText>FRIDAY</FridayText>
     </HomeWrapper>
   );
 };

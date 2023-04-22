@@ -10,6 +10,7 @@ import {
   DescriptionItem,
   TechnologiesWrapper,
 } from "./Experience.styled";
+import { diffInMonths } from "helpers/utils";
 
 export interface IExperience {
   id: number;
@@ -28,18 +29,22 @@ const Experience = ({ data }: { data: IExperience[] }) => {
       <TitleWrapper>
         <h1>Experience</h1>
       </TitleWrapper>
-      {data.map((value, i) => {
+      {data?.map((value, i) => {
+        const diff = diffInMonths(value.joinDate, value.leaveDate);
+
         return (
           <PositionWrapper key={i}>
-            <SubTitle>{value.position}</SubTitle>
+            <SubTitle type="position">{value.position}</SubTitle>
             <Description>
               {value.companyName} :{" "}
               {dayjs(value.joinDate).format("MMMM D, YYYY")} -{" "}
               {value.leaveDate
                 ? dayjs(value.leaveDate).format("MMMM D, YYYY")
-                : "Present"}
+                : `Present `}
+              <span> ( {diff} )</span>
             </Description>
-            <SubTitle>Description</SubTitle>
+
+            <SubTitle type="description">Description</SubTitle>
             <DescriptionWrapper>
               {value.description.map((v, i) => (
                 <DescriptionItem key={v}>{v}</DescriptionItem>
