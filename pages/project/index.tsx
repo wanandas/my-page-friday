@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { ProjectGitBox } from "@/components/Organisms";
 import { GetStaticProps } from "next";
-import { Box } from "@mui/material";
-import { ImageWrapper } from "@/components/Organisms/Section/ProfileBox/ProfileBox.styled";
 
 export type IData = {
   id: string;
@@ -25,13 +23,6 @@ const Project = ({ data }: { data: IData[] }) => {
         My Project Repo in GITHUB
       </h1>
 
-      <Box display={"flex"} justifyContent={"center"} mb="3rem">
-        <img
-          src="https://api.daily.dev/devcards/97f9ee5e21b54ca4abbe49ab656d5c99.png?r=9wk"
-          width="400"
-          alt="BusyOnFriday's Dev Card"
-        />
-      </Box>
       <ProjectGitBox data={data} />
     </div>
   );
