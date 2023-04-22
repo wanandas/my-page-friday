@@ -4,7 +4,6 @@ import { createClient } from "@supabase/supabase-js";
 import Head from "next/head";
 
 export default function ExperiencePage({ data }: { data: IExperience[] }) {
-  // console.log(data);
   return (
     <div>
       <Head>
