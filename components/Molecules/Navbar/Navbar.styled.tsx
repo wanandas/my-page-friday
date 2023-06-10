@@ -40,15 +40,30 @@ export const NavItem = styled(Link)`
   cursor: pointer;
   color: inherit;
   transition: 0.3s ease-in-out;
+  position: relative;
 
   @media screen and (min-width: 375px) {
     display: flex;
   }
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    background: salmon;
+    transition: all 0.3s linear;
+  }
+
   @media (hover: hover) {
     &:hover {
       color: salmon;
       text-shadow: 1px 1px 1px black;
-      transition: all 0.1s linear;
+      &::before {
+        transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        width: 100%;
+      }
     }
   }
 

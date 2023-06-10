@@ -19,10 +19,6 @@ export const TitleWrapper = styled("div")`
 
 export const SubTitle = styled("h3")<subProps>`
   margin-bottom: 0;
-  text-shadow: ${(props) =>
-    props.type === "position"
-      ? `1px 4px 4px ${props.theme.palette.primary.main}`
-      : "none"};
   font-weight: ${(props) => (props.type === "position" ? "bold" : "normal")};
 `;
 

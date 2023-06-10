@@ -8,6 +8,7 @@ export const HomePageWrapper = styled("div")`
 export const HomeTopSectionWrapper = styled("div")`
   display: flex;
   flex-direction: column;
+  position: 2;
 `;
 
 export const HomeWrapper = styled("div")`

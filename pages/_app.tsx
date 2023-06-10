@@ -8,46 +8,17 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Suspense, useMemo } from "react";
 import { LightTheme, DarkTheme } from "helpers/getDesignToken";
 import { SocialMedia } from "@/components/Organisms";
-import {
-  FacebookIcon,
-  GithubIcon,
-  InstagramIcon,
-  LinkedinIcon,
-} from "@/components/Atoms/Icons";
 import styled from "@emotion/styled";
+import { social } from "helpers/data/socials";
+
+import dynamic from "next/dynamic";
+const SpaceBackground = dynamic(
+  () => import("@/components/templates/backgroud/SpaceBackgroud"),
+  { ssr: false }
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   const { darkMode, handleDarkMode } = useDarkMode();
-
-  const social = useMemo(
-    () => [
-      {
-        key: "sc1",
-        Component: FacebookIcon,
-        link: "https://www.facebook.com/WanFutrue",
-        title: "Wantanawat Jitprakop",
-      },
-      {
-        key: "sc2",
-        Component: InstagramIcon,
-        link: "https://www.instagram.com/busyonfriday/",
-        title: "BusyOnFriday",
-      },
-      {
-        key: "sc3",
-        Component: LinkedinIcon,
-        link: "https://www.linkedin.com/in/wantanawat-jitprakop-0750a5188/",
-        title: "Wantanawat Jitprakop",
-      },
-      {
-        key: "sc4",
-        Component: GithubIcon,
-        link: "https://github.com/wanandas",
-        title: "BusyOnFriday",
-      },
-    ],
-    []
-  );
 
   const theme = useMemo(() => {
     return createTheme(darkMode ? DarkTheme : LightTheme);
@@ -61,9 +32,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="color-scheme" content="light dark" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Suspense fallback={<> </>}>
         <ThemeProvider theme={theme}>
           <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
+          <SpaceBackground />
+
           <div>
             <CssBaseline />
             <Component {...pageProps} />
