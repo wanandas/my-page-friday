@@ -10,8 +10,9 @@ import { LightTheme, DarkTheme } from "helpers/getDesignToken";
 import { SocialMedia } from "@/components/Organisms";
 import styled from "@emotion/styled";
 import { social } from "helpers/data/socials";
-
+import NextNProgress from "nextjs-progressbar";
 import dynamic from "next/dynamic";
+
 const SpaceBackground = dynamic(
   () => import("@/components/templates/backgroud/SpaceBackgroud"),
   { ssr: false }
@@ -32,8 +33,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="color-scheme" content="light dark" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Suspense fallback={<> </>}>
+        <NextNProgress />
         <ThemeProvider theme={theme}>
           <Navbar darkMode={darkMode} handleDarkMode={handleDarkMode} />
           <SpaceBackground />
