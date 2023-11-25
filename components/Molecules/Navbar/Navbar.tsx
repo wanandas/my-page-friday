@@ -9,7 +9,7 @@ interface INavbar {
 
 const Navbar = ({ handleDarkMode, darkMode }: INavbar) => {
   const menus = [{ title: "Experience" }, { title: "Project" }];
-
+  console.log("test");
   return (
     <NavWrapper>
       <NavList>
