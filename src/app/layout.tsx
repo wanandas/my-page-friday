@@ -17,18 +17,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const menu = ["experience", "project"];
+
   return (
     <html lang="en">
       <body className={inter.className}>
         {/* menu header */}
-        <div className="flex gap-4 p-4 fixed h-20 w-full justify-end z-[999] items-center backdrop-blur-[2px] px-4 py-0 top-0;">
-          {["experience", "project"].map((item) => (
+        <div className="flex gap-4 p-4 fixed h-20 w-full justify-end z-[999] items-center backdrop-blur-[2px] px-4 py-0 top-0">
+          {menu.map((item) => (
             <div className="capitalize" key={item}>
-              {item}
+              <a href={"/" + item}>{item}</a>
             </div>
           ))}
         </div>
-        {children}
+        <div className="mt-20">{children}</div>
       </body>
     </html>
   );
