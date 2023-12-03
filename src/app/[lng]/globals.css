@@ -20,5 +20,8 @@ body {
   margin: 0;
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  /* use tailwind */
+}
+
+.bg-main {
+  background: rgb(var(--background-rgb));
 }
