@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Locale, i18n } from '../../../i18n.config';
+import LocaleSwitcher from '@/src/components/switchLng';
+import { getDictionary } from '@/lib/dictionary';
 
 export async function generateStaticParams() {
   return i18n.locales.map(lng => ({ lng }));
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
   description: 'this is a personal website of BusyOnFriday',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { lng },
 }: {
@@ -26,7 +28,8 @@ export default function RootLayout({
     lng: Locale;
   };
 }) {
-  const menu = ['experience', 'project'];
+  const { experience, projects } = await getDictionary(lng);
+  const menu = [experience, projects];
 
   return (
     <html lang={lng}>
@@ -35,9 +38,10 @@ export default function RootLayout({
         <div className="sticky top-0 z-[999] flex h-20 w-full items-center justify-end gap-4 p-4 px-4 py-0 backdrop-blur-[2px]">
           {menu.map(item => (
             <div className="capitalize" key={item}>
-              <a href={'/' + item}>{item}</a>
+              {item}
             </div>
           ))}
+          <LocaleSwitcher />
         </div>
         <div className="h-[100dvh]">{children}</div>
       </body>
