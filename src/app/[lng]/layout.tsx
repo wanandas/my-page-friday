@@ -4,6 +4,7 @@ import './globals.css';
 import { Locale, i18n } from '../../../i18n.config';
 import LocaleSwitcher from '@/src/components/switchLng';
 import { getDictionary } from '@/lib/dictionary';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
   return i18n.locales.map(lng => ({ lng }));
@@ -36,9 +37,11 @@ export default async function RootLayout({
       <body className={inter.className}>
         {/* menu header */}
         <div className="sticky top-0 z-[999] flex h-20 w-full items-center justify-end gap-4 p-4 px-4 py-0 backdrop-blur-[2px]">
-          {menu.map(item => (
+          {menu.map((item, i) => (
             <div className="capitalize" key={item}>
-              {item}
+              <Link href={`/${lng}/${i === 0 ? 'experience' : 'projects'}`}>
+                {item}
+              </Link>
             </div>
           ))}
           <LocaleSwitcher />
