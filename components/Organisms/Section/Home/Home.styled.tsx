@@ -12,7 +12,7 @@ export const HomeTopSectionWrapper = styled("div")`
 `;
 
 export const HomeWrapper = styled("div")`
-  padding: 0 1rem;
+  padding: ${({ theme }) => theme.spacing(0, 2)};
   @media screen and (min-width: 768px) {
     width: 90%;
     align-self: center;
@@ -25,7 +25,7 @@ export const HomeWrapper = styled("div")`
 
 export const FridayText = styled("h1")`
   position: relative;
-  font-family: "Montserrat", sans-serif;
+  font-family: ${({ theme }) => theme.typography.h1.fontFamily};
   text-align: center;
   font-size: 88px;
   display: block;
