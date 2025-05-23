@@ -1,7 +1,7 @@
 import { DarkModeIcon } from "@/components/Atoms";
 import Link from "next/link";
 import { BusyOnFriday, NavItem, NavList, NavWrapper } from "./Navbar.styled";
-import { useTheme } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 interface INavbar {
   darkMode: boolean;
