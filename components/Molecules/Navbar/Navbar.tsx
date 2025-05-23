@@ -1,6 +1,7 @@
 import { DarkModeIcon } from "@/components/Atoms";
 import Link from "next/link";
 import { BusyOnFriday, NavItem, NavList, NavWrapper } from "./Navbar.styled";
+import { useTheme } from "@mui/material/styles";
 
 interface INavbar {
   darkMode: boolean;
@@ -9,7 +10,8 @@ interface INavbar {
 
 const Navbar = ({ handleDarkMode, darkMode }: INavbar) => {
   const menus = [{ title: "Experience" }, { title: "Project" }];
-  console.log("test");
+  const theme = useTheme();
+
   return (
     <NavWrapper>
       <NavList>
@@ -23,8 +25,8 @@ const Navbar = ({ handleDarkMode, darkMode }: INavbar) => {
         ))}
       </NavList>
       <DarkModeIcon
-        moonColor="#fff"
-        sunColor="#212112"
+        moonColor={theme.palette.text.primary}
+        sunColor={theme.palette.text.primary}
         checked={darkMode}
         onChange={handleDarkMode}
       />
