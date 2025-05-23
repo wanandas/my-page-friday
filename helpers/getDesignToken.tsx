@@ -27,7 +27,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
     fontFamily: openSans,
     h1: { fontFamily: michroma, fontSize: '2.5rem', fontWeight: 700 },
     h2: { fontFamily: michroma, fontSize: '2.25rem', fontWeight: 700 },
-    h3: { fontFamily: michroma, fontSize: '2.0rem', fontWeight: 700 },
+    h3: { fontFamily: michroma, fontSize: '2rem', fontWeight: 700 },
     h4: { fontFamily: michroma, fontSize: '1.75rem', fontWeight: 700 },
     h5: { fontFamily: michroma, fontSize: '1.5rem', fontWeight: 700 },
     h6: { fontFamily: michroma, fontSize: '1.25rem', fontWeight: 700 },
